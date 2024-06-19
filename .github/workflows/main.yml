@@ -6,7 +6,7 @@ on:
 jobs:
   CI:
     runs-on: ubuntu-latest
-    permissions: 
+    permissions:              #permite que ferramenta trivy tenha permissão sobre a questão dos arquivos de output.
       packages: write
       security-events: write
       id-token: write
