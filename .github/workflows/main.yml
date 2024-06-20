@@ -56,13 +56,13 @@ jobs:
           file: ./src/Dockerfile
           push: true
           tags: |
-            fabricioveronez/conversao-temperatura-aula:v${{ github.run_number }}
-            fabricioveronez/conversao-temperatura-aula:latest
+            andmlima/conversao-temperatura-2006:v${{ github.run_number }}
+            andmlima/conversao-temperatura-2006:latest
 
       - name: Scan da Imagem Docker
         uses: aquasecurity/trivy-action@0.20.0
         with:
-          image-ref: fabricioveronez/conversao-temperatura-aula:v${{ github.run_number }}
+          image-ref: andmlima/conversao-temperatura-2006:v${{ github.run_number }}
           format: 'sarif'
           exit-code: 0
           scan-type: 'image'
