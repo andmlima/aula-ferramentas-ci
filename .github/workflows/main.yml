@@ -75,3 +75,20 @@ jobs:
           sarif_file: resultados
           category: ferramentas
   
+  CD:
+    runs-on: ubuntu-latest
+    needs: [CI]
+    steps: 
+      - uses: actions/checkout@v3.1.0
+      
+      - name: Definindo o context
+        uses: Azure/k8s-set-context@v3.0
+        with:
+          method: kubeconfig
+          kubeconfig: ${{secrets.K8S_CONFIG}}
+      - name: Deploy to K8s
+        uses: Azure/k8s-deploy@v4
+        with: 
+          images: andmlima/conversao-temperatura-2006:v${{ github.run_number }}
+          manifests: |
+            k8s/deployment.yaml
